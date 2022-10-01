@@ -48,21 +48,14 @@ const ChatRoom=()=> {
 
     },[formValue])
   
-    return (<div className="w-full md:w-3/6  mx-auto">
-      <main className="w-full overflow-y-scroll h-[80vh] bg-violet-800 flex flex-col px-2">
-  
+    return (<div className="w-full h-[80vh] md:w-3/6  mx-auto">
+      <main className="w-full overflow-y-scroll h-full  bg-violet-800 flex flex-col px-2">
         {messages && messages.map(msg => <ChatMessage key={msg.id} message={msg} />)}
-  
         <div className=" h-16 w-16 bg-amber-500 " ref={dummy}></div>
-  
       </main>
-  
       <form className="w-full bg-violet-800 " onSubmit={sendMessage}>
-  
         <input value={formValue} className="w-5/6 p-2" onChange={(e) => setFormValue(e.target.value)} placeholder="Say something nice" />
-  
         <button type="submit" className="bg-amber-500 w-1/6 text-white font-bold py-2" disabled={!formValue || sending}>{sending ? '....':'Send'} </button>
-  
       </form>
     </div>)
   }
