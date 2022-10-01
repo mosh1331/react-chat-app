@@ -14,6 +14,7 @@ const ChatRoom=()=> {
   
     // const [messages] = useCollectionData(query, { idField: 'id' });
     const [messages,setMessages] = useState([]);
+    const [sending,setSending] = useState(false);
   
     const [formValue, setFormValue] = useState('');
   
@@ -26,6 +27,7 @@ const ChatRoom=()=> {
   
     const sendMessage = async (e) => {
       e.preventDefault();
+      setSending(true)
   
       const { uid, photoURL } = auth.currentUser;
       await addDoc(messagesRef,{
@@ -36,8 +38,15 @@ const ChatRoom=()=> {
       })
  
       setFormValue('');
-      dummy.current.scrollIntoView({ behavior: 'smooth' });
     }
+
+    useEffect(()=>{
+        if(formValue === ''){
+            dummy.current.scrollIntoView({ behavior: 'smooth' });
+            setSending(false)
+        }
+
+    },[formValue])
   
     return (<div className="w-full md:w-3/6  mx-auto">
       <main className="w-full overflow-y-scroll h-[80vh] bg-violet-800 flex flex-col px-2">
@@ -50,9 +59,9 @@ const ChatRoom=()=> {
   
       <form className="w-full bg-violet-800 " onSubmit={sendMessage}>
   
-        <input value={formValue} className="w-5/6 py-2" onChange={(e) => setFormValue(e.target.value)} placeholder="say something nice" />
+        <input value={formValue} className="w-5/6 p-2" onChange={(e) => setFormValue(e.target.value)} placeholder="Say something nice" />
   
-        <button type="submit" className="bg-amber-500 w-1/6 text-white font-bold py-2" disabled={!formValue}>Send</button>
+        <button type="submit" className="bg-amber-500 w-1/6 text-white font-bold py-2" disabled={!formValue || sending}>{sending ? '....':'Send'} </button>
   
       </form>
     </div>)
