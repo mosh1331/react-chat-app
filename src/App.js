@@ -12,8 +12,8 @@ function App () {
 
 const [user] = useAuthState(auth);
 
-  return <div className=' bg-indigo-500'>
-    <Header/>
+  return <div className=' bg-indigo-500 h-screen'>
+    <Header user={user}/>
     {user ? <ChatRoom />: <Home/>}
   </div>
 }
