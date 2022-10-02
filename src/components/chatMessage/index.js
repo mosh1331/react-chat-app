@@ -6,7 +6,7 @@ const dayjs = require('dayjs')
 export const DATE_STANDARD_FORMAT = 'YYYY-MM-DD';
 export const DATE_TIME_STANDARD_FORMAT = 'MMM D, YYYY h:mm A';
 export const DATE_TIME_STANDARD_FORMAT_LIVE = 'ddd, DD MMM';
-const DATE_TIME = 'ddd h m a	'
+const DATE_TIME = 'ddd h:m a	'
 
 const ChatMessage = ({ message }) => {
     const { text, uid, photoURL, createdAt } = message;
