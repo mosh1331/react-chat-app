@@ -8,13 +8,17 @@ import ChatRoom from './pages/chatRoom';
 import Home from './pages/home';
 import Header from './components/header';
 
-function App () {
+function App() {
 
-const [user] = useAuthState(auth);
+  const [user] = useAuthState(auth);
 
   return <div className=' bg-indigo-500 h-screen'>
-    <Header user={user}/>
-    {user ? <ChatRoom />: <Home/>}
+    <Header user={user} />
+    <div className="h-[90vh] md:h-[80vh]">
+      {user ?
+        <ChatRoom /> : <Home />}
+
+    </div>
   </div>
 }
 
