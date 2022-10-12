@@ -12,9 +12,9 @@ function App() {
 
   const [user] = useAuthState(auth);
 
-  return <div className=' bg-indigo-500 h-screen'>
+  return <div className=' bg-slate-100 h-screen'>
     <Header user={user} />
-    <div className="h-[90vh] md:h-[80vh]">
+    <div className="h-[90vh] md:h-[90vh]">
       {user ?
         <ChatRoom /> : <Home />}
 

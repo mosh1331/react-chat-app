@@ -38,12 +38,14 @@ const ChatMessage = ({ message }) => {
 
 
     return (<>
-        <div className={`${messageClass === 'sent' ? 'self-end flex-row-reverse' : 'self-start'}  mb-4 flex items-center `}>
-            <div className="w-8 h-8 rounded-full overflow-hidden ">
-                <img src={photoURL || 'https://api.adorable.io/avatars/23/abott@adorable.png'} className="w-full h-full object-cover" />
-            </div>
-            <div className=" bg-slate-100 rounded mx-2 px-2 flex flex-col">
-                <p className="">{text}</p>
+        <div className={`${messageClass === 'sent' ? 'self-end flex-row-reverse' : 'self-start'}  mb-4 flex items-center  rounded`}>
+            {messageClass === 'sent' ? null :
+                <div className="w-8 h-8 rounded-full overflow-hidden ">
+                    <img src={photoURL || 'https://api.adorable.io/avatars/23/abott@adorable.png'} className="w-full h-full object-cover" />
+                </div>
+            }
+            <div className={`${messageClass === 'sent' ? 'bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500' : 'bg-slate-100'}   rounded mx-2 px-2 flex flex-col`}>
+                <p className={`${messageClass === 'sent' ? "text-white" : "text-black"}`}>{text}</p>
                 <p className={`text-xs text-slate-400 ${messageClass === 'sent' ? 'self-start ' : 'self-end'}  `}>{formatEpochTime(createdAt.seconds, DATE_TIME)}</p>
             </div>
         </div>

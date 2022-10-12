@@ -63,22 +63,22 @@ const ChatRoom = () => {
   }, [formValue])
 
   return (
-    <div className='w-full h-full md:w-3/6 relative  mx-auto'>
-      <main className='w-full overflow-y-scroll h-full  bg-violet-800 flex flex-col px-2 pb-12'>
+    <div className='w-full h-full md:w-3/6 relative  mx-auto '>
+      <main className='w-full overflow-y-scroll h-full  bg-white flex flex-col px-2 pb-12'>
         {messages &&
           messages.map(msg => <ChatMessage key={msg.id} message={msg} />)}
-        <div className=' h-80 w-16 bg-amber-500 ' ref={dummy}></div>
+        <div className=' h-80 w-16  ' ref={dummy}></div>
       </main>
-      <form className='w-full md:w-3/6 fixed bottom-0 md:bottom-10 bg-violet-800 h-12 items-center  flex ' onSubmit={sendMessage}>
+      <form className='w-full md:w-3/6 fixed bottom-0 md:bottom-0 h-12 items-center  flex ' onSubmit={sendMessage}>
         <input
           value={formValue}
-          className='w-5/6 p-2 h-full'
+          className='w-5/6 p-2 h-full bg-slate-200 text-black'
           onChange={e => setFormValue(e.target.value)}
           placeholder='Say something nice'
         />
         <button
           type='submit'
-          className='bg-amber-500 w-1/6 h-full text-white font-bold py-2 items-center justify-center flex'
+          className='bg-indigo-800 w-1/6 h-full text-white font-bold py-2 items-center justify-center flex'
           disabled={!formValue || sending}
         >
           {sending ? <Loader /> : 'Send'}{' '}
